@@ -11,7 +11,7 @@ const useWindowStore = create(
         const win = state.windows[windowKey];
         if (!win) return;
         win.isOpen = true;
-        win.Zindex = state.nextZIndex;
+        win.zIndex = state.nextZIndex;
         win.data = data ?? win.data;
         state.nextZIndex++;
       }),
@@ -20,13 +20,15 @@ const useWindowStore = create(
         const win = state.windows[windowKey];
         if (!win) return;
         win.isOpen = false;
-        win.Zindex = state.nextZIndex;
+        win.zIndex = state.nextZIndex;
         win.data = null;
       }),
     focusWindow: (windowKey) =>
       set((state) => {
         const win = state.windows[windowKey];
+        if (!win) return;
         state.nextZIndex++;
+        win.zIndex = state.nextZIndex;
       }),
   })),
 );
