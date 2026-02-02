@@ -1,5 +1,5 @@
 import WindowControls from "#components/WindowControls";
-import { blogPosts } from "#constants";
+import { currentFocus } from "#constants";
 import WindowWrapper from "#hoc/WindowWrapper";
 import {
   ChevronLeft,
@@ -41,9 +41,9 @@ const Safari = () => {
         </div>
       </div>
       <div className="blog">
-        <h2>My Thoughts</h2>
+        <h2>Current Focus</h2>
         <div className="space-y-8">
-          {blogPosts.map(({ id, image, title, date, link }) => (
+          {currentFocus.map(({ id, image, title, date, link }) => (
             <div key={id} className="blog-post">
               <div className="col-span-2">
                 <img src={image} alt={title} />

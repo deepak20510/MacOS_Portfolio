@@ -74,28 +74,27 @@ const dockApps = [
   },
 ];
 
-const blogPosts = [
+const currentFocus = [
   {
     id: 1,
-    date: "Sep 2, 2025",
-    title:
-      "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
-    image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    date: "Currently Learning",
+    title: "DevOps Basics: Docker, CI/CD & Deployment",
+    image: "/images/focus1.png",
+    link: "https://devopscube.com/list-of-devops-blogs-and-resources/?utm_source=chatgpt.com",
   },
   {
     id: 2,
-    date: "Aug 28, 2025",
-    title: "The Ultimate Guide to Mastering Three.js for 3D Development",
-    image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    date: "Improving",
+    title: "Data Structures & Algorithms for Interviews",
+    image: "/images/focus2.jpg",
+    link: "https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z",
   },
   {
     id: 3,
-    date: "Aug 15, 2025",
-    title: "The Ultimate Guide to Mastering GSAP Animations",
-    image: "/images/blog3.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-gsap-animations",
+    date: "Exploring",
+    title: "System Design & Scalable Architectures",
+    image: "/images/focus3.jpg",
+    link: "https://github.com/donnemartin/system-design-primer?tab=readme-ov-file",
   },
 ];
 
@@ -132,28 +131,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/deepak20510",
   },
   {
     id: 2,
-    text: "Platform",
+    text: "Instagram",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://www.instagram.com/deepak.28_04/",
   },
   {
     id: 3,
     text: "Twitter/X",
     icon: "/icons/twitter.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://x.com/deepakmahato817",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/deepak20510/",
   },
 ];
 
@@ -188,19 +187,19 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/deepak-1.png",
   },
   {
     id: 2,
-    img: "/images/gal2.png",
+    img: "/images/deepak-2.png",
   },
   {
     id: 3,
-    img: "/images/gal3.png",
+    img: "/images/deepak-3.png",
   },
   {
     id: 4,
-    img: "/images/gal4.png",
+    img: "/images/gal-4.png",
   },
 ];
 
@@ -208,7 +207,7 @@ export {
   navLinks,
   navIcons,
   dockApps,
-  blogPosts,
+  currentFocus,
   techStack,
   socials,
   photosLinks,
@@ -331,7 +330,7 @@ const WORK_LOCATION = {
     // ▶ Project 3
     {
       id: 7,
-      name: "Food Delivery App",
+      name: " Realtime Chat App",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-80",
@@ -339,16 +338,16 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Food Delivery App Project.txt",
+          name: "Realtime Chat App.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "Our Food Delivery App is a fast and convenient way to order meals from your favorite restaurants.",
-            "Instead of making calls or waiting in line, you can browse menus, customize orders, and track deliveries in real time.",
-            "Think of it like having your favorite restaurants in your pocket—ready to deliver anytime, anywhere.",
-            "It’s built with React Native, so it works smoothly on both iOS and Android with a clean, modern design.",
+            "Our Real-Time Chat App is a fast and reliable way to communicate instantly with people anywhere.",
+            "Instead of refreshing pages or waiting for replies, you can send and receive messages in real time with live updates.",
+            "Think of it like having an instant conversation channel in your pocket—always connected and always responsive.",
+            "It’s built using Socket.io, ensuring low-latency, real-time messaging with a smooth and modern user experience.",
           ],
         },
         {
@@ -362,20 +361,20 @@ const WORK_LOCATION = {
         },
         {
           id: 4,
-          name: "food-delivery-app.png",
+          name: "real-time-chat-app.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
           position: "top-52 right-80",
-          imageUrl: "/images/project-3.png",
+          imageUrl: "/images/real-time-messaging.png",
         },
         {
           id: 5,
-          name: "Design.fig",
+          name: "Design.source",
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://app.eraser.io/workspace/duWSGzgj44KQHXt39ciP",
           position: "top-60 right-20",
         },
       ],
@@ -397,7 +396,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/deepak-2.png",
     },
     {
       id: 2,
@@ -406,16 +405,16 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/deepak-3.png",
     },
     {
       id: 3,
-      name: "conference-me.png",
+      name: "achived-me.png",
       icon: "/images/image.png",
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/deepak-1.png",
     },
     {
       id: 4,
@@ -425,12 +424,12 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/deepak-2.png",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Hey! I’m Deepak 👋, a B.Tech CSE student and web developer who enjoys building clean, functional apps that actually solve problems.",
+        "I specialize in JavaScript, React, Node.js, and the MERN stack—and I love making things fast, responsive, and user-friendly.",
+        "I’m big on clean UI, solid backend logic, and writing code that future-me won’t hate debugging.",
+        "Outside of dev work, you’ll usually find me learning DevOps, hitting the gym, refining projects late at night, or tweaking code until it finally feels just right 😅",
       ],
     },
   ],
@@ -449,8 +448,6 @@ const RESUME_LOCATION = {
       icon: "/images/pdf.png",
       kind: "file",
       fileType: "pdf",
-      // you can add `href` if you want to open a hosted resume
-      // href: "/your/resume/path.pdf",
     },
   ],
 };
