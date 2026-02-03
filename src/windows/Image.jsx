@@ -14,7 +14,7 @@ const Image = () => {
         <WindowControls target="imgfile" />
         <h2>{data.name}</h2>
       </div>
-      <div className="p-5 bg-white h-full flex items-center justify-center">
+      <div className="preview">
         {data.imageUrl && (
           <img
             src={data.imageUrl}
