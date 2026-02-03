@@ -9,11 +9,20 @@ import Resume from "#windows/Resume";
 import Finder from "#windows/Finder";
 import Text from "#windows/Text";
 import Image from "#windows/Image";
+import Photos from "#windows/Photos";
 import Contact from "#windows/Contact";
 import Home from "#components/Home";
+import { useEffect } from "react";
+import useThemeStore from "#store/theme";
 
 gsap.registerPlugin(Draggable);
 const App = () => {
+  const hydrateTheme = useThemeStore((s) => s.hydrateTheme);
+
+  useEffect(() => {
+    hydrateTheme();
+  }, [hydrateTheme]);
+
   return (
     <main>
       <Navbar />
@@ -26,6 +35,7 @@ const App = () => {
       <Finder />
       <Text />
       <Image />
+      <Photos />
       <Contact />
       <Home />
     </main>
