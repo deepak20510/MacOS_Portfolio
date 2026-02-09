@@ -93,7 +93,6 @@ body::before {
       @apply block;
     }
   }
-
   nav {
     @apply flex justify-between items-center backdrop-blur-3xl p-2 px-5 select-none;
     background: rgba(var(--nav-bg), 0.5);

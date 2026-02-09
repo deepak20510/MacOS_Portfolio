@@ -28,6 +28,10 @@ const Image = () => {
           <h2>{data.name}</h2>
         </div>
       )}
+      <div id="window-header">
+        <WindowControls target="imgfile" />
+        <h2>{data.name}</h2>
+      </div>
       <div className="preview">
         {data.imageUrl && (
           <img

@@ -28,6 +28,10 @@ const Text = () => {
           <h2>{name}</h2>
         </div>
       )}
+      <div id="window-header">
+        <WindowControls target="txtfile" />
+        <h2>{name}</h2>
+      </div>
       <div className="p-5 space-y-6">
         {image ? (
           <div className="w-full">
