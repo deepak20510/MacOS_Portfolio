@@ -61,6 +61,12 @@ const dockApps = [
     canOpen: true,
   },
   {
+    id: "music",
+    name: "Music",
+    icon: "music1.png",
+    canOpen: true,
+  },
+  {
     id: "terminal",
     name: "Skills", // was "Terminal"
     icon: "terminal.png",
@@ -496,6 +502,7 @@ const WINDOW_CONFIG = {
   safari: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   photos: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   terminal: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
+  music: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   txtfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
   imgfile: { isOpen: false, zIndex: INITIAL_Z_INDEX, data: null },
 };

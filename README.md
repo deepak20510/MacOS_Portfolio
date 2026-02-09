@@ -1,16 +1,118 @@
-# React + Vite
+#  Deepak's macOS Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, professional, and fully interactive portfolio application inspired by the macOS and iOS interfaces. Built with a focus on smooth animations, responsive design, and a premium user experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📱 Dual-Interface Experience
 
-## React Compiler
+This portfolio isn't just a website—it's a complete operating system experience that adapts to your device:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **🖥️ Desktop (macOS Style):** A high-end desktop interface featuring a top menu bar, interactive dock, and a multi-window management system.
+*   **📱 Mobile (iOS Style):** A native iPhone-inspired interface with a status bar, notch, app grid, and fullscreen navigation when your screen size is below 768px.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+### 🎵 Music Experience
+*   **Desktop Music Widget:** A floating glassmorphism music player that stays accessible while you browse
+*   **Mobile Music App:** Full-screen iOS-style music player with album artwork, progress bar, and playback controls
+*   **Integrated Playlist:** Four carefully curated tracks with smooth playback and seamless transitions
+*   **Cross-Platform Sync:** Consistent music experience across both desktop and mobile views
+
+### 🖼️ Interactive Gallery
+*   **Masonry Collage:** A professional photo grid that handles different aspect ratios perfectly.
+*   **Image Viewer:** Click any photo to open it in a dedicated macOS-style preview window with focus handling.
+
+### 📁 Advanced Finder (Portfolio)
+*   **Hierarchical Navigation:** Browse through "Favourites" and "My Projects" just like the native Files app.
+*   **Project Linking:** Open code files, project links, and Figma designs directly from the interface.
+
+### 📄 Pro Resume Viewer
+*   **In-App Display:** View my PDF resume without leaving the site.
+*   **Quick Download:** A prominent, beautiful download button for easy offline access.
+
+### ⌨️ Terminal (Skills)
+*   **Tech Stack:** A command-line inspired view showing my proficiency in Frontend, Backend, Mobile, and Dev Tools.
+
+### 🌐 Safari (Articles)
+*   **Developer Blog:** A clean, iOS-native style list view for reading my latest articles and technical deep dives.
+
+### 🌗 Global Dark Mode
+*   **Seamless Transition:** A beautiful circle-reveal animation when switching themes.
+*   **Adaptive UI:** Every component, icon (including the Apple logo), and window header adjusts perfectly to your preferred theme.
+*   **Theme-Aware Widgets:** All interactive elements adapt to light/dark mode automatically
+
+### 🎨 UI/UX Enhancements
+*   **iPhone-Style Interface:** Authentic iOS status bar with dynamic notch integration
+*   **Glassmorphism Design:** Modern frosted glass effects throughout the interface
+*   **Smooth Animations:** 60 FPS performance with GSAP-powered transitions
+*   **Responsive Layout:** Perfect adaptation to all screen sizes and orientations
+
+---
+
+## 🛠️ Built With
+
+*   **[React](https://reactjs.org/):** Core framework for component-driven architecture.
+*   **[Tailwind CSS](https://tailwindcss.com/):** For rapid, utility-first styling and responsive design.
+*   **[GSAP](https://greensock.com/gsap/):** Powers the smooth window dragging and dock animations.
+*   **[Framer Motion](https://www.framer.com/motion/):** Used for micro-interactions and theme transitions.
+*   **[Zustand](https://github.com/pmndrs/zustand):** Lightweight state management for window controls and theme persistence.
+*   **[Lucide React](https://lucide.dev/):** For clean, consistent iconography.
+
+---
+
+## 🚀 Getting Started
+
+To run this project locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/deepak20510/MacOS-Portfolio.git
+    ```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 📂 Project Structure
+
+```text
+├── src/
+│   ├── components/   # Reusable UI (Dock, Navbar, MobileHome, MusicWidget)
+│   ├── constants/    # Data for projects, skills, links, and window configurations
+│   ├── store/        # Zustand state (Window, Theme, Location)
+│   ├── windows/      # App components (Safari, Finder, Photos, Music)
+│   ├── hoc/          # WindowWrapper for window behavior
+│   └── utils/        # Helper functions (Time, etc.)
+└── public/           # Static assets (Images, Icons, Music files, PDFs)
+```
+
+---
+
+## 🎯 Latest Updates
+
+### v2.1 - Music Integration
+* Added desktop music widget with glassmorphism design
+* Implemented mobile music player app with iOS-style interface
+* Integrated four-track playlist with smooth playback
+* Enhanced theme adaptability for all interactive components
+* Improved mobile interface with clean status bar design
+
+### v2.0 - Dual Interface System
+* Complete desktop/macOS interface implementation
+* Native iOS mobile experience with status bar and notch
+* Window management system with drag-and-drop functionality
+* Responsive design for all screen sizes
+* Dark/light mode with seamless transitions
+
+---
+
+Designed and Developed with ❤️ by **Deepak**.

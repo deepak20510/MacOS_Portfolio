@@ -1,15 +1,33 @@
 import WindowControls from "#components/WindowControls";
+import MobileWindowHeader from "#components/MobileWindowHeader";
 import WindowWrapper from "#hoc/WindowWrapper";
 import useWindowStore from "#store/window.js";
+import { useState, useEffect } from "react";
 
 const Text = () => {
   const { windows } = useWindowStore();
   const data = windows.txtfile?.data;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   if (!data) return null;
   const { name, image, subtitle, description } = data;
   return (
     <>
+      {isMobile ? (
+        <MobileWindowHeader target="txtfile" title={name || "About Me"} returnTo="finder" />
+      ) : (
+        <div id="window-header">
+          <WindowControls target="txtfile" />
+          <h2>{name}</h2>
+        </div>
+      )}
       <div id="window-header">
         <WindowControls target="txtfile" />
         <h2>{name}</h2>

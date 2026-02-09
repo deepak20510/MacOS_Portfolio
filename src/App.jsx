@@ -1,6 +1,8 @@
 import Dock from "#components/Dock";
 import Navbar from "#components/Navbar";
 import Welcome from "#components/Welcome";
+import MobileHome from "#components/MobileHome";
+import MusicWidget from "#components/MusicWidget";
 import { Draggable } from "gsap/Draggable";
 import gsap from "gsap";
 import Terminal from "#windows/Terminal";
@@ -14,6 +16,8 @@ import Contact from "#windows/Contact";
 import Home from "#components/Home";
 import { useEffect } from "react";
 import useThemeStore from "#store/theme";
+import Music from "#windows/Music";
+
 
 gsap.registerPlugin(Draggable);
 const App = () => {
@@ -25,10 +29,23 @@ const App = () => {
 
   return (
     <main>
-      <Navbar />
-      <Welcome />
-      <Dock />
+      {/* Desktop View */}
+      <div className="desktop-view">
+        <Navbar />
+        <Welcome />
+        <Dock />
+        <Home />
+        <MusicWidget />
+      </div>
 
+      {/* Mobile View */}
+      <div className="mobile-view">
+        <MobileHome />
+        <Music />
+
+      </div>
+
+      {/* Windows (shared across both views) */}
       <Terminal />
       <Safari />
       <Resume />
@@ -37,7 +54,7 @@ const App = () => {
       <Image />
       <Photos />
       <Contact />
-      <Home />
+
     </main>
   );
 };

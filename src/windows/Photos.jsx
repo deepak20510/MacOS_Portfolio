@@ -1,4 +1,20 @@
 import WindowControls from "#components/WindowControls";
+import MobileWindowHeader from "#components/MobileWindowHeader";
+import { gallery, photosLinks } from "#constants/index";
+import WindowWrapper from "#hoc/WindowWrapper";
+import useWindowStore from "#store/window";
+import { useState, useEffect } from "react";
+
+const Photos = () => {
+  const { openWindow, focusWindow } = useWindowStore();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 import { gallery, photosLinks } from "#constants/index";
 import WindowWrapper from "#hoc/WindowWrapper";
 import useWindowStore from "#store/window";
@@ -16,6 +32,14 @@ const Photos = () => {
 
   return (
     <>
+      {isMobile ? (
+        <MobileWindowHeader target="photos" title="All Photos" />
+      ) : (
+        <div id="window-header">
+          <WindowControls target="photos" />
+          <h2>Photos</h2>
+        </div>
+      )}
       <div id="window-header">
         <WindowControls target="photos" />
         <h2>Photos</h2>
