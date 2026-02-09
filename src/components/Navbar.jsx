@@ -1,13 +1,18 @@
 import dayjs from "dayjs";
 import { navIcons, navLinks } from "../constants";
 import useWindowStore from "#store/window";
+import ThemeToggleButton from "#components/ThemeToggleButton";
 
 const Navbar = () => {
   const { openWindow } = useWindowStore();
   return (
     <nav>
       <div>
-        <img src="/images/logo.svg" alt="logo" />
+        <img
+          src="/images/logo.svg"
+          className="icon-hover nav-icon"
+          alt="logo"
+        />
         <p className="font-bold">Deepak's Portfolio</p>
         <ul>
           {navLinks.map(({ id, name, type }) => (
@@ -21,7 +26,15 @@ const Navbar = () => {
         <ul>
           {navIcons.map(({ id, img }) => (
             <li key={id}>
-              <img src={img} className="icon-hover" alt={`icon-${id}`} />
+              {img === "/icons/mode.svg" ? (
+                <ThemeToggleButton />
+              ) : (
+                <img
+                  src={img}
+                  className="icon-hover nav-icon"
+                  alt={`icon-${id}`}
+                />
+              )}
             </li>
           ))}
         </ul>

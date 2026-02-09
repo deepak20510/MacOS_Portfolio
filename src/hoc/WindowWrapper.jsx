@@ -1,6 +1,6 @@
 import useWindowStore from "#store/window";
 import { useGSAP } from "@gsap/react";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import Draggable from "gsap/Draggable";
 
@@ -9,6 +9,14 @@ const WindowWrapper = (Component, windowKey) => {
     const { focusWindow, windows } = useWindowStore();
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     useGSAP(() => {
       const el = ref.current;
@@ -23,12 +31,13 @@ const WindowWrapper = (Component, windowKey) => {
     }, [isOpen]);
 
     useGSAP(() => {
+      if (isMobile) return;
       const el = ref.current;
       const [instance] = Draggable.create(el, {
         onPress: () => focusWindow(windowKey),
       });
       return () => instance.kill();
-    }, []);
+    }, [isMobile]);
 
     useLayoutEffect(() => {
       const el = ref.current;
