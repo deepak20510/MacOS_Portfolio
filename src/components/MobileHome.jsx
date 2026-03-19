@@ -5,7 +5,7 @@ import { Battery, Signal, Wifi } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const MobileHome = () => {
-  const { openWindow, windows } = useWindowStore();
+  const { openWindow } = useWindowStore();
   const [currentTime, setCurrentTime] = useState(formatTime());
 
   useEffect(() => {

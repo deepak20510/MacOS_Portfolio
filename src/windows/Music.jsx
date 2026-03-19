@@ -1,13 +1,14 @@
 import WindowWrapper from "#hoc/WindowWrapper";
 import MobileWindowHeader from "#components/MobileWindowHeader";
 import { Pause, Play, SkipBack, SkipForward, Music as MusicIcon } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const Music = () => {
-  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -53,12 +54,16 @@ const Music = () => {
 
   const currentSong = playlist[currentIndex];
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const playNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+    setProgress(0);
+    // If we were playing, continue playing with the new song
+    if (isPlaying && audioRef.current) {
+      setTimeout(() => {
+        audioRef.current.play().catch(e => console.log("Audio play error:", e));
+      }, 100);
+    }
+  }, [playlist.length, isPlaying]);
 
   // Set up audio element when current song changes
   useEffect(() => {
@@ -79,8 +84,9 @@ const Music = () => {
       
       // Update duration when metadata is loaded
       const handleLoadedMetadata = () => {
-        // Update the duration when the audio is loaded
-        // We don't modify the playlist duration here to keep it static
+        if (audioRef.current) {
+          setDuration(audioRef.current.duration);
+        }
       };
       
       // Handle when audio ends
@@ -108,13 +114,14 @@ const Music = () => {
       
       return () => {
         if (audioRef.current) {
-          audioRef.current.removeEventListener('loadedmetadata', handleLoadedMetadata);
-          audioRef.current.removeEventListener('ended', handleEnded);
-          audioRef.current.removeEventListener('error', handleError);
+          const currentAudio = audioRef.current;
+          currentAudio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+          currentAudio.removeEventListener('ended', handleEnded);
+          currentAudio.removeEventListener('error', handleError);
         }
       };
     }
-  }, [currentIndex]);
+  }, [currentIndex, currentSong.audioSrc, playNext]);
 
   // When the song changes, play it if currently playing
   useEffect(() => {
@@ -124,7 +131,7 @@ const Music = () => {
         audioRef.current.play().catch(e => console.log("Audio play error:", e));
       }, 100);
     }
-  }, [currentIndex]);
+  }, [currentIndex, isPlaying]);
 
   // Progress bar animation and audio sync
   useEffect(() => {
@@ -144,10 +151,11 @@ const Music = () => {
     if (isPlaying && audioRef.current) {
       progressInterval = setInterval(() => {
         if (audioRef.current && !isNaN(audioRef.current.duration)) {
-          const currentTime = audioRef.current.currentTime;
-          const duration = audioRef.current.duration;
-          const calculatedProgress = duration > 0 ? (currentTime / duration) * 100 : 0;
+          const current = audioRef.current.currentTime;
+          const dur = audioRef.current.duration;
+          const calculatedProgress = dur > 0 ? (current / dur) * 100 : 0;
           setProgress(calculatedProgress);
+          setCurrentTime(current);
         }
       }, 1000); // Update every second
     }
@@ -159,17 +167,6 @@ const Music = () => {
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
-  };
-
-  const playNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
-    setProgress(0);
-    // If we were playing, continue playing with the new song
-    if (isPlaying && audioRef.current) {
-      setTimeout(() => {
-        audioRef.current.play().catch(e => console.log("Audio play error:", e));
-      }, 100);
-    }
   };
 
   const playPrevious = () => {
@@ -193,6 +190,7 @@ const Music = () => {
       const newTime = pos * audioRef.current.duration;
       audioRef.current.currentTime = newTime;
       setProgress(pos * 100);
+      setCurrentTime(newTime);
     }
   };
 
@@ -244,10 +242,10 @@ const Music = () => {
               ></div>
             </div>
             <div className="music-time">
-              {audioRef.current && !isNaN(audioRef.current.duration) ? (
+              {duration > 0 ? (
                 <>
-                  <span>{Math.floor(audioRef.current.currentTime / 60)}:{String(Math.floor(audioRef.current.currentTime % 60)).padStart(2, '0')}</span>
-                  <span>{Math.floor(audioRef.current.duration / 60)}:{String(Math.floor(audioRef.current.duration % 60)).padStart(2, '0')}</span>
+                  <span>{Math.floor(currentTime / 60)}:{String(Math.floor(currentTime % 60)).padStart(2, '0')}</span>
+                  <span>{Math.floor(duration / 60)}:{String(Math.floor(duration % 60)).padStart(2, '0')}</span>
                 </>
               ) : (
                 <>
@@ -296,4 +294,6 @@ const Music = () => {
   }
 };
 
-export default WindowWrapper(Music, "music");
+const MusicWindow = WindowWrapper(Music, "music");
+
+export default MusicWindow;

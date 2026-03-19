@@ -15,12 +15,6 @@ const Photos = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-import { gallery, photosLinks } from "#constants/index";
-import WindowWrapper from "#hoc/WindowWrapper";
-import useWindowStore from "#store/window";
-
-const Photos = () => {
-  const { openWindow, focusWindow } = useWindowStore();
 
   const handleImageClick = (img) => {
     openWindow("imgfile", {
@@ -40,10 +34,6 @@ const Photos = () => {
           <h2>Photos</h2>
         </div>
       )}
-      <div id="window-header">
-        <WindowControls target="photos" />
-        <h2>Photos</h2>
-      </div>
 
       <div className="flex-1 flex overflow-hidden">
         <div className="sidebar">

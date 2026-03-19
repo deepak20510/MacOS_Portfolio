@@ -1,5 +1,5 @@
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 
@@ -53,6 +53,16 @@ const MusicWidget = () => {
   // Get current song from playlist
   const currentSong = playlist[currentIndex];
 
+  const playNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+    // If we were playing, continue playing with the new song
+    if (isPlaying && audioRef.current) {
+      setTimeout(() => {
+        audioRef.current.play().catch(e => console.log("Audio play error:", e));
+      }, 100);
+    }
+  }, [playlist.length, isPlaying]);
+
   // Set up audio element when current song changes
   useEffect(() => {
     if (audioRef.current) {
@@ -94,12 +104,13 @@ const MusicWidget = () => {
       
       return () => {
         if (audioRef.current) {
-          audioRef.current.removeEventListener('ended', handleEnded);
-          audioRef.current.removeEventListener('error', handleError);
+          const currentAudio = audioRef.current;
+          currentAudio.removeEventListener('ended', handleEnded);
+          currentAudio.removeEventListener('error', handleError);
         }
       };
     }
-  }, [currentIndex]);
+  }, [currentIndex, currentSong.audioSrc, playNext]);
 
   // When the song changes, play it if currently playing
   useEffect(() => {
@@ -109,7 +120,7 @@ const MusicWidget = () => {
         audioRef.current.play().catch(e => console.log("Audio play error:", e));
       }, 100);
     }
-  }, [currentIndex]);
+  }, [currentIndex, isPlaying]);
 
   useEffect(() => {
     if (widgetRef.current) {
@@ -148,16 +159,6 @@ const MusicWidget = () => {
 
   const togglePlay = () => {
     setIsPlaying(!isPlaying);
-  };
-
-  const playNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
-    // If we were playing, continue playing with the new song
-    if (isPlaying && audioRef.current) {
-      setTimeout(() => {
-        audioRef.current.play().catch(e => console.log("Audio play error:", e));
-      }, 100);
-    }
   };
 
   const playPrevious = () => {
