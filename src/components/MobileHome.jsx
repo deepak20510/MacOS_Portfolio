@@ -1,7 +1,8 @@
 import { dockApps } from "#constants";
 import useWindowStore from "#store/window";
+import useSpotlightStore from "#store/spotlight";
 import { formatTime } from "#utils/time";
-import { Battery, Signal, Wifi } from "lucide-react";
+import { Battery, Signal, Wifi, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const MobileHome = () => {
@@ -25,10 +26,22 @@ const MobileHome = () => {
       {/* iPhone Status Bar */}
       <div className="mobile-status-bar">
         <div className="status-left">
+          <img 
+            src="/images/logo.svg" 
+            alt="logo" 
+            className="w-4 h-4 mr-2 object-contain dark:invert cursor-pointer" 
+            onClick={() => openWindow("aboutDialog")}
+          />
           <span className="time">{currentTime}</span>
         </div>
         <div className="notch"></div>
         <div className="status-right">
+          <div 
+            className="cursor-pointer hover:opacity-70 transition-opacity p-1" 
+            onClick={() => useSpotlightStore.getState().openSpotlight()}
+          >
+            <Search size={14} strokeWidth={2.5} />
+          </div>
           <Signal size={14} strokeWidth={2.5} />
           <Wifi size={14} strokeWidth={2.5} />
           <Battery size={14} strokeWidth={2.5} />

@@ -14,6 +14,8 @@ import Image from "#windows/Image";
 import Photos from "#windows/Photos";
 import Contact from "#windows/Contact";
 import Home from "#components/Home";
+import Spotlight from "#components/Spotlight";
+import AboutDialog from "#windows/AboutDialog";
 import { useEffect } from "react";
 import useThemeStore from "#store/theme";
 import Music from "#windows/Music";
@@ -29,6 +31,7 @@ const App = () => {
 
   return (
     <main>
+      <Spotlight />
       {/* Desktop View */}
       <div className="desktop-view">
         <Navbar />
@@ -54,6 +57,7 @@ const App = () => {
       <Image />
       <Photos />
       <Contact />
+      <AboutDialog />
 
     </main>
   );

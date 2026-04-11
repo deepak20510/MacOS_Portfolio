@@ -502,6 +502,16 @@ body::before {
     }
   }
 
+  #aboutDialog {
+    @apply w-[340px] absolute top-32 left-[calc(50%-170px)] shadow-2xl drop-shadow-2xl rounded-2xl overflow-hidden backdrop-blur-2xl;
+    background: rgba(var(--surface-1), 0.85);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+
+    .about-content {
+      @apply p-6 pt-0;
+    }
+  }
+
   #txtfile {
     @apply w-md absolute top-36 right-32 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
     background: rgb(var(--surface-1));
@@ -915,6 +925,7 @@ body::before {
     #photos,
     #music,
     #txtfile,
+    #aboutDialog,
     #imgfile {
       @apply fixed inset-0 w-full h-full rounded-none top-0 left-0 z-[9999] flex flex-col;
       transform: none !important;
