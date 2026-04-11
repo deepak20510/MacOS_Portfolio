@@ -27,14 +27,21 @@ body {
 
 html.dark {
   /* slightly lighter main surface, darker chrome/sidebar for layered look */
-  --surface-1: 39, 39, 42; /* main content */
-  --surface-2: 22, 27, 34; /* header/sidebar */
-  --border-1: 51, 65, 85; /* slate-700 */
-  --text-1: 243, 244, 246; /* gray-100 */
-  --text-2: 156, 163, 175; /* gray-400 */
-  --nav-bg: 3, 7, 18; /* near-black */
+  --surface-1: 39, 39, 42;
+  /* main content */
+  --surface-2: 22, 27, 34;
+  /* header/sidebar */
+  --border-1: 51, 65, 85;
+  /* slate-700 */
+  --text-1: 243, 244, 246;
+  /* gray-100 */
+  --text-2: 156, 163, 175;
+  /* gray-400 */
+  --nav-bg: 3, 7, 18;
+  /* near-black */
   --nav-fg: 243, 244, 246;
-  --icon-hover: 30, 41, 59; /* slate-800 */
+  --icon-hover: 30, 41, 59;
+  /* slate-800 */
   --wallpaper-dim: 0.45;
   color-scheme: dark;
 }
@@ -93,6 +100,7 @@ body::before {
       @apply block;
     }
   }
+
   nav {
     @apply flex justify-between items-center backdrop-blur-3xl p-2 px-5 select-none;
     background: rgba(var(--nav-bg), 0.5);
@@ -284,8 +292,20 @@ body::before {
     }
   }
 
+  @keyframes terminal-blink {
+
+    from,
+    to {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-2xl h-[500px] flex flex-col absolute top-32 left-1/12 shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
     background: rgb(var(--surface-1));
     color: rgb(var(--text-1));
 
@@ -295,6 +315,11 @@ body::before {
 
     .techstack {
       @apply text-sm font-roboto p-5;
+
+      .terminal-cursor {
+        @apply inline-block w-2 h-4.5 bg-[#00A154] ml-1 align-middle;
+        animation: terminal-blink 1s step-end infinite;
+      }
 
       .label {
         @apply flex items-center ms-10 mt-7;
@@ -572,21 +597,22 @@ body::before {
     width: 280px;
     padding: 16px;
     z-index: 9998;
-    
+
     /* Adaptive Glassmorphism Effect */
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%); /* Safari support */
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    /* Safari support */
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
-                0 1px 3px rgba(0, 0, 0, 0.05);
-    
+      0 1px 3px rgba(0, 0, 0, 0.05);
+
     /* Smooth transitions */
     transition: all 0.3s ease;
 
     &:hover {
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15),
-                  0 2px 6px rgba(0, 0, 0, 0.08);
+        0 2px 6px rgba(0, 0, 0, 0.08);
       transform: translateY(-2px);
     }
 
@@ -601,11 +627,11 @@ body::before {
     background: rgba(30, 30, 30, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                0 1px 3px rgba(0, 0, 0, 0.1);
+      0 1px 3px rgba(0, 0, 0, 0.1);
 
     &:hover {
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4),
-                  0 2px 6px rgba(0, 0, 0, 0.15);
+        0 2px 6px rgba(0, 0, 0, 0.15);
       transform: translateY(-2px);
     }
   }
@@ -631,17 +657,20 @@ body::before {
     .music-title {
       @apply text-base font-semibold mb-1 truncate;
       color: rgba(0, 0, 0, 0.95);
-      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2); /* Reduced intensity for better readability */
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+      /* Reduced intensity for better readability */
     }
 
     .music-artist {
       @apply text-sm truncate mb-1;
-      color: rgba(0, 0, 0, 0.85); /* Increased contrast */
+      color: rgba(0, 0, 0, 0.85);
+      /* Increased contrast */
     }
 
     .music-counter {
       @apply text-xs font-medium;
-      color: rgba(0, 0, 0, 0.7); /* Increased contrast */
+      color: rgba(0, 0, 0, 0.7);
+      /* Increased contrast */
     }
   }
 
@@ -652,11 +681,13 @@ body::before {
     }
 
     .music-artist {
-      color: rgba(255, 255, 255, 0.85); /* Increased contrast */
+      color: rgba(255, 255, 255, 0.85);
+      /* Increased contrast */
     }
 
     .music-counter {
-      color: rgba(255, 255, 255, 0.7); /* Increased contrast */
+      color: rgba(255, 255, 255, 0.7);
+      /* Increased contrast */
     }
   }
 
@@ -683,8 +714,10 @@ body::before {
 
     svg {
       transition: transform 0.2s ease;
-      color: currentColor; /* Ensure SVG inherits text color */
-      fill: currentColor; /* Ensure SVG fills use text color */
+      color: currentColor;
+      /* Ensure SVG inherits text color */
+      fill: currentColor;
+      /* Ensure SVG fills use text color */
     }
   }
 
@@ -697,10 +730,12 @@ body::before {
       background: rgba(0, 0, 0, 0.15);
       border-color: rgba(0, 0, 0, 0.12);
     }
-    
+
     svg {
-      color: currentColor; /* Ensure SVG inherits text color */
-      fill: currentColor; /* Ensure SVG fills use text color */
+      color: currentColor;
+      /* Ensure SVG inherits text color */
+      fill: currentColor;
+      /* Ensure SVG fills use text color */
     }
   }
 
@@ -843,8 +878,10 @@ body::before {
   .mobile-status-bar {
     @apply flex items-center justify-between px-6 pt-3 pb-2 relative;
     min-height: 50px;
-    background: transparent; /* Clean background */
-    backdrop-filter: none; /* Remove glassy effect */
+    background: transparent;
+    /* Clean background */
+    backdrop-filter: none;
+    /* Remove glassy effect */
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -917,6 +954,7 @@ body::before {
 
   /* Mobile Window Styles - Fullscreen */
   @media (max-width: 768px) {
+
     #finder,
     #safari,
     #terminal,
@@ -1024,7 +1062,7 @@ body::before {
       background: rgb(var(--surface-1));
     }
 
-    #safari .blog > div {
+    #safari .blog>div {
       @apply space-y-0;
     }
 
@@ -1037,7 +1075,7 @@ body::before {
       background: rgba(var(--icon-hover), 0.5);
     }
 
-    #safari .blog-post > div:first-child {
+    #safari .blog-post>div:first-child {
       @apply w-16 h-16 flex-shrink-0 overflow-hidden;
     }
 
@@ -1077,7 +1115,7 @@ body::before {
     }
 
     /* Mobile Contact adjustments */
-    #contact > div {
+    #contact>div {
       @apply p-5 space-y-5;
     }
 
@@ -1085,7 +1123,7 @@ body::before {
       @apply flex flex-col;
     }
 
-    #contact > div:not(.mobile-window-header) {
+    #contact>div:not(.mobile-window-header) {
       @apply flex-1 overflow-y-auto;
     }
 
@@ -1128,7 +1166,7 @@ body::before {
     }
 
     /* Mobile Text viewer */
-    #txtfile > div {
+    #txtfile>div {
       @apply p-5 space-y-6;
     }
 
@@ -1136,7 +1174,7 @@ body::before {
       @apply flex flex-col;
     }
 
-    #txtfile > div:not(.mobile-window-header) {
+    #txtfile>div:not(.mobile-window-header) {
       @apply flex-1 overflow-y-auto;
     }
 
