@@ -44,11 +44,24 @@ This portfolio isn't just a website—it's a complete operating system experienc
 *   **Adaptive UI:** Every component, icon (including the Apple logo), and window header adjusts perfectly to your preferred theme.
 *   **Theme-Aware Widgets:** All interactive elements adapt to light/dark mode automatically
 
+### 🔍 Spotlight Search
+*   **Global Access:** Press `Cmd + Space` or `Cmd + K` to search for apps, skills, and links instantly.
+*   **Intelligent Indexing:** Real-time filtering across projects, tech stack, and navigation links.
+
+### 👁️ Quick Look
+*   **Instant Preview:** Highlight any project and press `Spacebar` for a professional, high-speed preview.
+*   **Seamless Integration:** Native-style file inspection without opening full applications.
+
+### 🍏 Apple Boot Experience
+*   **Authentic Startup:** macOS-style boot sequence with logo and loading progress.
+*   **Polished Entry:** Smooth transition from boot screen to the desktop environment.
+
 ### 🎨 UI/UX Enhancements
-*   **iPhone-Style Interface:** Authentic iOS status bar with dynamic notch integration
-*   **Glassmorphism Design:** Modern frosted glass effects throughout the interface
-*   **Smooth Animations:** 60 FPS performance with GSAP-powered transitions
-*   **Responsive Layout:** Perfect adaptation to all screen sizes and orientations
+*   **Dynamic Glassmorphism:** State-of-the-art frosted glass effects with real-time backdrop-blur.
+*   **Focus-Responsive Shadows:** Windows dynamically adjust depth shadows when focused, creating a realistic layered OS feel.
+*   **iPhone-Style Interface:** Authentic iOS status bar with dynamic notch integration.
+*   **Smooth Animations:** 60 FPS performance with GSAP and Framer Motion transitions.
+*   **Responsive Layout:** Perfect adaptation to all screen sizes and orientations.
 
 ---
 
@@ -88,16 +101,24 @@ To run this project locally:
 ├── src/
 │   ├── components/   # Reusable UI (Dock, Navbar, MobileHome, MusicWidget)
 │   ├── constants/    # Data for projects, skills, links, and window configurations
-│   ├── store/        # Zustand state (Window, Theme, Location)
-│   ├── windows/      # App components (Safari, Finder, Photos, Music)
+│   ├── store/        # Zustand state (Window, Theme, Spotlight, Location)
+│   ├── windows/      # App components (Safari, Finder, Photos, Music, Terminal)
 │   ├── hoc/          # WindowWrapper for window behavior
-│   └── utils/        # Helper functions (Time, etc.)
+│   ├── hooks/        # Custom React hooks (Mobile navigation, event listeners)
+│   └── utils/        # Helper functions (Time, string formatting)
 └── public/           # Static assets (Images, Icons, Music files, PDFs)
 ```
 
 ---
 
-## 🎯 Latest Updates
+### 🎯 Latest Updates
+
+### v2.2 - Advanced Interaction & Polish
+*   **Spotlight Search:** Implemented global search with `Cmd + Space` / `Cmd + K` shortcuts
+*   **Quick Look:** Added Spacebar project preview functionality
+*   **Dynamic Shadows:** Added focus-responsive depth shadows for windows
+*   **Boot Screen:** Implemented authentic macOS startup sequence
+*   **Performance:** Optimized window management and mobile navigation responsiveness
 
 ### v2.1 - Music Integration
 * Added desktop music widget with glassmorphism design
