@@ -20,11 +20,14 @@ import { useEffect } from "react";
 import useThemeStore from "#store/theme";
 import Music from "#windows/Music";
 import useMobileBackButton from "#hooks/useMobileBackButton";
+import BootScreen from "#components/BootScreen";
+import { useState } from "react";
 
 
 gsap.registerPlugin(Draggable);
 const App = () => {
   const hydrateTheme = useThemeStore((s) => s.hydrateTheme);
+  const [isBooting, setIsBooting] = useState(true);
 
   useEffect(() => {
     hydrateTheme();
@@ -35,6 +38,7 @@ const App = () => {
 
   return (
     <main>
+      {isBooting && <BootScreen onBootComplete={() => setIsBooting(false)} />}
       <Spotlight />
       {/* Desktop View */}
       <div className="desktop-view">

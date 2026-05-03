@@ -55,22 +55,23 @@ const Safari = () => {
           </div>
         </div>
       )}
-      <div className="blog">
-        <h2>Current Focus</h2>
-        <div className="space-y-8">
+      <div className="blog scrollbar-hide">
+        <h2 className="section-header">Current Focus</h2>
+        <div className="blog-posts-container">
           {currentFocus.map(({ id, image, title, date, link }) => (
-            <div key={id} className="blog-post">
-              <div className="col-span-2">
+            <article key={id} className="blog-card">
+              <div className="blog-card-image">
                 <img src={image} alt={title} />
               </div>
-              <div className="content">
-                <p>{date}</p>
-                <h3>{title}</h3>
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                  Check out the full post <MoveRight className="icon-hover" />
+              <div className="blog-card-content">
+                <span className="blog-card-date">{date}</span>
+                <h3 className="blog-card-title">{title}</h3>
+                <a href={link} target="_blank" rel="noopener noreferrer" className="blog-card-link">
+                  <span>Read full post</span>
+                  <MoveRight size={16} />
                 </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

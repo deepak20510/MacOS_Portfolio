@@ -25,7 +25,7 @@ const Photos = () => {
   };
 
   return (
-    <>
+    <div className="h-full flex flex-col overflow-hidden">
       {isMobile ? (
         <MobileWindowHeader target="photos" title="All Photos" />
       ) : (
@@ -58,7 +58,7 @@ const Photos = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

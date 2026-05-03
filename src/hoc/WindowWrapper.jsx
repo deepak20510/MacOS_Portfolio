@@ -6,7 +6,7 @@ import Draggable from "gsap/Draggable";
 
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
-    const { focusWindow, windows } = useWindowStore();
+    const { focusWindow, windows, getTopmostOpenWindow } = useWindowStore();
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
     const [isMobile, setIsMobile] = useState(() =>
@@ -62,6 +62,8 @@ const WindowWrapper = (Component, windowKey) => {
       el.style.display = isOpen ? "block" : "none";
     }, [isOpen]);
 
+    const isFocused = getTopmostOpenWindow() === windowKey;
+
     return (
       <section
         id={windowKey}
@@ -70,7 +72,7 @@ const WindowWrapper = (Component, windowKey) => {
           zIndex,
           ...(isMobile ? { touchAction: "auto" } : {}),
         }}
-        className="absolute"
+        className={`absolute ${isFocused ? "focused" : ""}`}
       >
         {" "}
         <Component {...props} />
