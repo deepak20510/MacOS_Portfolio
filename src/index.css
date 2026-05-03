@@ -969,9 +969,16 @@ body::before {
       transform: none !important;
       max-width: 100% !important;
       overflow: hidden;
+      /* Override GSAP Draggable's touch-action:none that blocks taps on real phones */
+      touch-action: manipulation !important;
 
       #window-header {
         @apply hidden;
+      }
+
+      /* Ensure all interactive children also have proper touch-action */
+      *, *::before, *::after {
+        touch-action: manipulation !important;
       }
     }
 

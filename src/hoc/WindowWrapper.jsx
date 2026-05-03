@@ -9,11 +9,12 @@ const WindowWrapper = (Component, windowKey) => {
     const { focusWindow, windows } = useWindowStore();
     const { isOpen, zIndex } = windows[windowKey];
     const ref = useRef(null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(() =>
+      typeof window !== "undefined" ? window.innerWidth <= 768 : false
+    );
 
     useEffect(() => {
       const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-      checkMobile();
       window.addEventListener("resize", checkMobile);
       return () => window.removeEventListener("resize", checkMobile);
     }, []);
@@ -39,13 +40,38 @@ const WindowWrapper = (Component, windowKey) => {
       return () => instance.kill();
     }, [isMobile]);
 
+    // Force touch-action on mobile so native touch events work on real devices.
+    // GSAP Draggable sets touch-action:none globally which blocks taps on phones.
+    useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      if (isMobile) {
+        el.style.touchAction = "auto";
+        // Also fix any children that GSAP may have touched
+        el.querySelectorAll("*").forEach((child) => {
+          if (child.style.touchAction === "none") {
+            child.style.touchAction = "auto";
+          }
+        });
+      }
+    }, [isMobile, isOpen]);
+
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
       el.style.display = isOpen ? "block" : "none";
     }, [isOpen]);
+
     return (
-      <section id={windowKey} ref={ref} style={{ zIndex }} className="absolute">
+      <section
+        id={windowKey}
+        ref={ref}
+        style={{
+          zIndex,
+          ...(isMobile ? { touchAction: "auto" } : {}),
+        }}
+        className="absolute"
+      >
         {" "}
         <Component {...props} />
       </section>

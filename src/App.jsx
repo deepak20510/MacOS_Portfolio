@@ -19,6 +19,7 @@ import AboutDialog from "#windows/AboutDialog";
 import { useEffect } from "react";
 import useThemeStore from "#store/theme";
 import Music from "#windows/Music";
+import useMobileBackButton from "#hooks/useMobileBackButton";
 
 
 gsap.registerPlugin(Draggable);
@@ -28,6 +29,9 @@ const App = () => {
   useEffect(() => {
     hydrateTheme();
   }, [hydrateTheme]);
+
+  // Intercept phone back button to close windows instead of leaving the site
+  useMobileBackButton();
 
   return (
     <main>
