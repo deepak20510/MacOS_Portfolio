@@ -652,20 +652,20 @@ body::before {
   #safari, #terminal, #contact, #photos, #resume, #finder, #txtfile, #imgfile, #aboutDialog {
     backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
-    background: rgba(var(--surface-1), 0.7) !important;
-    border: 1px solid rgba(var(--border-1), 0.3);
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(229, 231, 235, 0.3);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     &.focused {
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(var(--border-1), 0.4);
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(229, 231, 235, 0.4);
       transform: scale(1.002);
     }
   }
 
   html.dark #safari, html.dark #terminal, html.dark #contact, html.dark #photos, 
   html.dark #resume, html.dark #finder, html.dark #txtfile, html.dark #imgfile, html.dark #aboutDialog {
-    background: rgba(var(--surface-1), 0.6) !important;
+    background: rgba(39, 39, 42, 0.6) !important;
     border: 1px solid rgba(255, 255, 255, 0.1);
     
     &.focused {
