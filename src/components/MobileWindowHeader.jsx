@@ -22,7 +22,7 @@ const MobileWindowHeader = ({ target, title, onCustomBack, returnTo }) => {
     <div className="mobile-window-header">
       <button className="back-button" onClick={handleBack}>
         <ChevronLeft size={24} strokeWidth={2.5} />
-        <span>Go back</span>
+        <span>Back</span>
       </button>
       <h1 className="window-title">{title}</h1>
       <div className="spacer"></div>

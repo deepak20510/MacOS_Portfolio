@@ -866,6 +866,44 @@ body::before {
   /* MOBILE STYLES - iPhone Interface */
   /* ============================================ */
 
+  @keyframes appIconEntrance {
+    from {
+      opacity: 0;
+      transform: scale(0.5) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes dockSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes mobileWindowSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%) !important;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) !important;
+    }
+  }
+
   .mobile-home {
     @apply fixed inset-0 w-full h-full flex flex-col;
     background: url('/images/wallpe.jpg'), linear-gradient(to bottom, #1a1a2e, #16213e);
@@ -879,9 +917,7 @@ body::before {
     @apply flex items-center justify-between px-6 pt-3 pb-2 relative;
     min-height: 50px;
     background: transparent;
-    /* Clean background */
     backdrop-filter: none;
-    /* Remove glassy effect */
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -908,20 +944,48 @@ body::before {
     @apply flex-1 grid grid-cols-4 gap-6 p-6 pt-12 content-start overflow-y-auto;
 
     .mobile-app-icon {
-      @apply flex flex-col items-center gap-2 cursor-pointer active:scale-95 transition-transform;
+      @apply flex flex-col items-center gap-2 cursor-pointer;
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation: appIconEntrance 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+      /* Stagger each icon entrance */
+      &:nth-child(1) { animation-delay: 0.05s; }
+      &:nth-child(2) { animation-delay: 0.1s; }
+      &:nth-child(3) { animation-delay: 0.15s; }
+      &:nth-child(4) { animation-delay: 0.2s; }
+      &:nth-child(5) { animation-delay: 0.25s; }
+      &:nth-child(6) { animation-delay: 0.3s; }
+      &:nth-child(7) { animation-delay: 0.35s; }
+      &:nth-child(8) { animation-delay: 0.4s; }
+
+      &:active {
+        transform: scale(0.88);
+      }
 
       .app-icon-wrapper {
-        @apply w-16 h-16 rounded-2xl overflow-hidden shadow-lg;
+        @apply w-16 h-16 rounded-2xl overflow-hidden;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        box-shadow:
+          0 4px 12px rgba(0, 0, 0, 0.25),
+          0 1px 3px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: box-shadow 0.2s ease;
 
         img {
           @apply w-full h-full object-cover;
         }
       }
 
+      &:active .app-icon-wrapper {
+        box-shadow:
+          0 2px 6px rgba(0, 0, 0, 0.3),
+          0 0px 1px rgba(0, 0, 0, 0.2);
+      }
+
       .app-name {
         @apply text-white text-xs text-center font-medium;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+        letter-spacing: 0.01em;
       }
     }
   }
@@ -929,13 +993,22 @@ body::before {
   /* iPhone Dock */
   .mobile-dock {
     @apply flex items-center justify-center gap-6 px-6 py-4 mx-4 mb-2 rounded-3xl;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px) saturate(150%);
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     flex-shrink: 0;
+    animation: dockSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
 
     .mobile-dock-icon {
-      @apply w-16 h-16 rounded-2xl overflow-hidden shadow-xl cursor-pointer active:scale-90 transition-transform;
+      @apply w-16 h-16 rounded-2xl overflow-hidden cursor-pointer;
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+      &:active {
+        transform: scale(0.85);
+      }
 
       img {
         @apply w-full h-full object-cover;
@@ -950,6 +1023,7 @@ body::before {
     height: 5px;
     background: rgba(255, 255, 255, 0.4);
     flex-shrink: 0;
+    animation: pulseGlow 3s ease-in-out infinite;
   }
 
   /* Mobile Window Styles - Fullscreen */
@@ -971,6 +1045,9 @@ body::before {
       overflow: hidden;
       /* Override GSAP Draggable's touch-action:none that blocks taps on real phones */
       touch-action: manipulation !important;
+      /* Smooth slide-up entrance on mobile */
+      animation: mobileWindowSlideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+      background: rgb(var(--surface-1));
 
       #window-header {
         @apply hidden;
@@ -1012,26 +1089,40 @@ body::before {
     }
 
     .mobile-section {
-      @apply mb-6;
+      @apply mb-2;
     }
 
     .mobile-section-title {
-      @apply text-xs font-semibold uppercase tracking-wider px-4 py-3 sticky top-0 z-10;
+      @apply text-xs font-bold uppercase tracking-widest px-5 py-3 sticky top-0 z-10;
       color: rgb(var(--text-2));
-      background: rgb(var(--surface-2));
+      background: rgba(var(--surface-2), 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      letter-spacing: 0.08em;
     }
 
     .mobile-list {
       @apply divide-y;
-      border-color: rgb(var(--border-1));
+      border-color: rgba(var(--border-1), 0.5);
     }
 
     .mobile-list-item {
-      @apply flex items-center gap-3 px-4 py-3 cursor-pointer active:bg-gray-100 transition-colors;
+      @apply flex items-center gap-3 px-5 py-4 cursor-pointer transition-all duration-150;
       color: rgb(var(--text-1));
+
+      p {
+        @apply truncate;
+      }
+
+      /* Chevron arrow indicator */
+      span {
+        @apply text-xl font-light flex-shrink-0;
+        color: rgba(var(--text-2), 0.5);
+      }
 
       &:active {
         background: rgba(var(--icon-hover), 0.5);
+        transform: scale(0.99);
       }
     }
 
@@ -1046,12 +1137,25 @@ body::before {
     }
 
     .mobile-detail-grid {
-      @apply grid grid-cols-3 gap-6 p-6;
+      @apply grid grid-cols-3 gap-5 p-5;
     }
 
     .mobile-detail-item {
-      @apply flex flex-col items-center cursor-pointer active:scale-95 transition-transform;
+      @apply flex flex-col items-center cursor-pointer;
       color: rgb(var(--text-1));
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      &:active {
+        transform: scale(0.9);
+      }
+
+      img {
+        @apply drop-shadow-md;
+      }
+
+      p {
+        @apply truncate max-w-full text-center;
+      }
     }
 
     /* Mobile Safari adjustments */
@@ -1123,7 +1227,7 @@ body::before {
 
     /* Mobile Contact adjustments */
     #contact>div {
-      @apply p-5 space-y-5;
+      @apply p-6 space-y-5;
     }
 
     #contact {
@@ -1132,6 +1236,19 @@ body::before {
 
     #contact>div:not(.mobile-window-header) {
       @apply flex-1 overflow-y-auto;
+    }
+
+    #contact ul {
+      @apply flex flex-col gap-3;
+    }
+
+    #contact ul li {
+      @apply w-full rounded-xl;
+      transition: transform 0.15s ease;
+    }
+
+    #contact ul li:active {
+      transform: scale(0.97);
     }
 
     /* Mobile Resume adjustments */
@@ -1192,32 +1309,49 @@ body::before {
 
   /* Mobile Window Header */
   .mobile-window-header {
-    @apply flex items-center justify-between px-4 py-3 bg-white border-b border-gray-200;
+    @apply flex items-center justify-between px-4 py-3 border-b border-gray-200/80;
     min-height: 56px;
     flex-shrink: 0;
     position: relative;
     z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 
     .back-button {
-      @apply flex items-center gap-1 text-blue-500 font-medium text-base cursor-pointer bg-transparent border-0;
+      @apply flex items-center gap-0.5 text-blue-500 font-medium text-base cursor-pointer bg-transparent border-0 flex-shrink-0;
       pointer-events: auto;
+      min-width: 60px;
+      transition: opacity 0.15s ease, transform 0.15s ease;
 
       &:active {
         @apply opacity-70;
+        transform: scale(0.96);
       }
     }
 
     .window-title {
-      @apply text-lg font-semibold text-gray-900 absolute left-1/2 -translate-x-1/2;
+      @apply text-base font-semibold text-gray-900;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: calc(100% - 160px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .spacer {
-      @apply w-20;
+      @apply flex-shrink-0;
+      width: 60px;
     }
   }
 
   html.dark .mobile-window-header {
-    @apply bg-gray-900 border-gray-800;
+    @apply border-gray-800/80;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 
     .window-title {
       @apply text-white;
