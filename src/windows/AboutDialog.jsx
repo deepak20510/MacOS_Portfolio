@@ -15,7 +15,7 @@ const AboutDialog = () => {
 
   const downloadResume = () => {
     // Standard way to trigger a download or open a PDF
-    window.open("/files/resume1.pdf", "_blank");
+    window.open("/files/Resume_Deepak.pdf", "_blank");
   };
 
   return (

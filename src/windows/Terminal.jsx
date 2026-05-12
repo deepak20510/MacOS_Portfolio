@@ -91,7 +91,7 @@ const Terminal = () => {
             <ul className="mt-2 ml-4 space-y-2">
               {locations.work.children.map(p => (
                 <li key={p.id} className="text-[#00A154]">
-                   ▶ {p.name}
+                  ▶ {p.name}
                 </li>
               ))}
             </ul>
@@ -108,7 +108,7 @@ const Terminal = () => {
           break;
         case "resume":
           output = "Opening resume...";
-          window.open("/files/resume1.pdf", "_blank");
+          window.open("/files/Resume_Deepak.pdf", "_blank");
           break;
         case "clear":
           setHistory([]);
@@ -136,11 +136,11 @@ const Terminal = () => {
         <MobileWindowHeader target="terminal" title="Tech Stack" />
       ) : (
         <div id="window-header">
-          <WindowControls target="terminal"/>
+          <WindowControls target="terminal" />
           <h2>Terminal: @deepak — portfolio</h2>
         </div>
       )}
-      <div 
+      <div
         className="techstack flex-1 overflow-y-auto font-roboto p-5 selection:bg-[#00A154] selection:text-white"
         onClick={focusInput}
         ref={scrollRef}

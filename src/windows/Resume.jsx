@@ -27,7 +27,7 @@ const Resume = () => {
         <div className="mobile-resume-header">
           <MobileWindowHeader target="resume" title="Resume.pdf" returnTo="finder" />
           <a
-            href="/files/resume1.pdf"
+            href="/files/Resume_Deepak.pdf"
             download="Deepak_Resume.pdf"
             className="mobile-download-btn"
             title="Download Resume"
@@ -41,7 +41,7 @@ const Resume = () => {
           <WindowControls target="resume" />
           <h2>Resume.pdf</h2>
           <a
-            href="/files/resume1.pdf"
+            href="/files/Resume_Deepak.pdf"
             download="Deepak_Resume.pdf"
             className="cursor-pointer"
             title="Download Resume"
@@ -50,7 +50,7 @@ const Resume = () => {
           </a>
         </div>
       )}
-      <Document file="/files/resume1.pdf">
+      <Document file="/files/Resume_Deepak.pdf">
         <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
       </Document>
     </>
