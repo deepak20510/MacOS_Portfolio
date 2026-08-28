@@ -226,7 +226,7 @@ const WORK_LOCATION = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "DraftBoard - Collaborative Whiteboard",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -234,30 +234,30 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "DraftBoard Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "DraftBoard is a collaborative whiteboard application designed for fast visual ideation and team brainstorming.",
+            "Features hand-drawn RoughJS sketch styling, clean vector shapes, live WebSocket collaboration with multi-user cursor sync, and one-click PNG export.",
+            "Includes an intuitive floating toolbar, deep properties inspection (stroke colors, fill styles, opacity), and single-key shortcuts.",
+            "Built with Next.js, Tailwind CSS, and HTML5 Canvas, ensuring sub-10ms input latency and ultra-fluid rendering.",
           ],
         },
         {
           id: 2,
-          name: "nike.com",
+          name: "draftboard-app.vercel.app",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://draftboard-app.vercel.app/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "nike.png",
+          name: "draftboard.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -266,11 +266,11 @@ const WORK_LOCATION = {
         },
         {
           id: 5,
-          name: "Design.fig",
+          name: "DraftBoard Design.fig",
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://www.figma.com/design/y512Q9jI2Z1IGfb0fAat7L/Untitled?node-id=0-1&t=aWRasgrf8P6HLzCi-1",
           position: "top-60 right-20",
         },
       ],
